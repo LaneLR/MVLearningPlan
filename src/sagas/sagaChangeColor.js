@@ -1,4 +1,4 @@
-import { delay, put, take, takeEvery } from "redux-saga/effects";
+import { delay, put, takeEvery } from "redux-saga/effects";
 import { changeToBlue, changeToBlueAsync } from "@/app/slices/changeColorSlice";
 
 function* handleAsyncChangeBlue() {
