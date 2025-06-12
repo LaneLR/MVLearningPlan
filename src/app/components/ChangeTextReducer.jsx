@@ -24,6 +24,7 @@ function reducer(state, action) {
 
 export default function ChangeTextWords() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [dummy, setUpdate] = useState(false)
   const trackingState = useRef(state)
 
   return (
@@ -39,7 +40,7 @@ export default function ChangeTextWords() {
           <button onClick={() => dispatch({ type: "green" })}>green</button>
           <button onClick={() => dispatch({ type: "pink" })}>pink</button>
           <button onClick={() => dispatch({ type: "default" })}>default</button>
-          <button onClick={() => trackingState.current = state}>update State</button>
+          <button onClick={() => {trackingState.current = state; setUpdate(r => !r)}}>update State</button>
         </div>
       </div>
     </>
