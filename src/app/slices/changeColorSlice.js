@@ -14,8 +14,9 @@ const changeColor = createSlice({
         changeToYellow: (state) => {
             state.color = 'yellow'
         },
+        changeToBlueAsync: () => {},
     }   
 })
 
-export const { changeToBlue, changeToYellow } = changeColor.actions;
+export const { changeToBlue, changeToYellow, changeToBlueAsync } = changeColor.actions;
 export default changeColor.reducer;

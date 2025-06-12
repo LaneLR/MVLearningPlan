@@ -7,7 +7,7 @@ import {
   decrement,
   changeByAmount,
 } from "./slices/changeCounterSlice";
-import { changeToBlue, changeToYellow } from "./slices/changeColorSlice";
+import { changeToBlue, changeToBlueAsync, changeToYellow } from "./slices/changeColorSlice";
 
 const AppWrapper = styled.div`
   display: flex;
@@ -62,7 +62,7 @@ export default function Home() {
           </StyledButton>
         </div>
         <div>
-          <StyledButton onClick={() => dispatch(changeToBlue())}>blue</StyledButton>
+          <StyledButton onClick={() => dispatch(changeToBlueAsync())}>blue</StyledButton>
           <StyledButton onClick={() => dispatch(changeToYellow())}>yellow</StyledButton>
         </div>
       </AppWrapper>
