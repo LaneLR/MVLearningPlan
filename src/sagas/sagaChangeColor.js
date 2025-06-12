@@ -1,5 +1,5 @@
 import { delay, put, take, takeEvery } from "redux-saga/effects";
-import { changeToBlue } from "@/app/slices/changeColorSlice";
+import { changeToBlue, changeToBlueAsync } from "@/app/slices/changeColorSlice";
 
 function* handleAsyncChangeBlue() {
     yield delay(3000);
@@ -7,5 +7,5 @@ function* handleAsyncChangeBlue() {
 }
 
 export default function* colorSaga() {
-    yield takeEvery('changeColor/changeToBlueAsync', handleAsyncChangeBlue)
+    yield takeEvery(changeToBlueAsync.type, handleAsyncChangeBlue)
 }

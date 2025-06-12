@@ -4,6 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import counterReducer from "./app/slices/changeCounterSlice";
 import colorReducer from './app/slices/changeColorSlice'
+import imageReducer from './app/slices/changeImageSlice'
 import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -12,6 +13,7 @@ const store = configureStore({
   reducer: { 
     changeCount: counterReducer,
     changeColor: colorReducer,
+    changeImage: imageReducer,
 },
     middleware: (getDefaultMiddleWare) => getDefaultMiddleWare({ thunk: false }).concat(sagaMiddleware)
 });
