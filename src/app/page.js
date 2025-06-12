@@ -7,13 +7,14 @@ import {
   decrement,
   changeByAmount,
 } from "./slices/changeCounterSlice";
-import { changeToBlue, changeToYellow } from "./slices/changeColorSlice";
+import { changeToBlue, changeToBlueAsync, changeToYellow } from "./slices/changeColorSlice";
+import { fetchMemeImage } from "./slices/changeImageSlice";
 
 const AppWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  height: 100vh;
+  height: 30vh;
   flex-flow: column nowrap;
 `;
 
@@ -29,14 +30,21 @@ const StyledButton = styled.button`
   color: black;
   border: 2px solid gray;
   margin: 0 10px;
-  width: auto;
-  min-width: 40px;
+  width: 70px;
+  height: auto;
+
+  &:active {
+  background-color: darkgray;
+  margin: 0 10px;
+  border: none;
+  }
 `;
 
 export default function Home() {
   const dispatch = useDispatch();
   const count = useSelector((state) => state.changeCount.value);
   const colors = useSelector((state) => state.changeColor.color);
+  const memeImgUrl = useSelector((state) => state.changeImage.url)
   const [newIncrement, setNewIncrement] = useState(0);
 
   return (
@@ -62,10 +70,14 @@ export default function Home() {
           </StyledButton>
         </div>
         <div>
-          <StyledButton onClick={() => dispatch(changeToBlue())}>blue</StyledButton>
+          <StyledButton onClick={() => dispatch(changeToBlueAsync())}>blue</StyledButton>
           <StyledButton onClick={() => dispatch(changeToYellow())}>yellow</StyledButton>
         </div>
       </AppWrapper>
+      <div style={{display: "flex", justifyContent: "center", flexDirection: 'column', alignItems: 'center'}}>
+        <img style={{ maxWidth: '400px', maxHeight: '400px'}} src={memeImgUrl}/>
+        <StyledButton onClick={() => dispatch(fetchMemeImage())}>Get Meme</StyledButton>
+      </div>
     </>
   );
 }
